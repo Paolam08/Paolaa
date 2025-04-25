@@ -20,36 +20,83 @@
         nav a:hover {
             background-color: gray;
         }
+
+        /* Estilos básicos para el formulario (opcional) */
+        .formulario-contacto {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .campo-formulario {
+            margin-bottom: 15px;
+        }
+
+        .campo-formulario label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .campo-formulario input[type="text"],
+        .campo-formulario input[type="email"],
+        .campo-formulario textarea {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        .campo-formulario textarea {
+            resize: vertical;
+        }
+
+        .boton-enviar {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .boton-enviar:hover {
+            background-color: gray;
+        }
     </style>
 </head>
 <body bgcolor="white">
-<body>
 
     <nav>
-        <a href="Inicio.html">Inicio</a>
-        <a href="Galeria.html">Galería</a>
-        <a href="Ordenar.html">Ordenar</a>
-        <a href="Contáctanos.html">Contáctanos</a>
+        <a href="inicio.html">Inicio</a>
+        <a href="galeria.html">Galería</a>
+        <a href="ordenar.html">Ordenar</a>
+        <a href="contactanos.html">Contáctanos</a>
     </nav>
 
     <h1>Ordenar</h1>
 
     <h2>¿Tienes Alguna Pregunta o Sugerencia sobre el Mundo Zara? ¡Estamos Aquí para Escucharte!</h2>
-    <img src="comunicación_otecimpulsa.png" alt="Fotografía" width="300" height="250">
-    <hr color = "black" size = "15" aling = "center">
+    <img src="comunicación_otecimpulsa.png" alt="Fotografía" width="300" height="250">
+    <hr color="black" size="15" align="center">
 
     <p><strong>"Tu opinión y tus consultas son importantes para nosotros. <br>
     Si tienes alguna duda sobre las últimas colecciones, necesitas más <br>
     información sobre algún tema relacionado con Zara, o simplemente quieres<br>
     compartir tus ideas, no dudes en ponerte en contacto a través del siguiente<br>
     formulario. ¡Te responderemos a la brevedad!"</strong></p>
-    <hr color = "black" size = "15" aling = "center">
+    <hr color="black" size="15" align="center">
 
     <h3>Formulario de Contacto:</h3>
 
     <div class="formulario-contacto">
         <h3>Envíanos tu Mensaje:</h3>
-        <form action="/procesar-formulario" method="POST">
+        <form id="miFormulario" method="POST" onsubmit="mostrarMensaje(event)">
             <div class="campo-formulario">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
@@ -70,7 +117,24 @@
         </form>
     </div>
 
+    <div id="mensajeEnviado" style="display:none;">
+        <h2>¡Mensaje Enviado!</h2>
+        <p>Gracias por tu mensaje.</p>
+    </div>
 
-    <a href="index.html"> Regresar al menù </a>
+    <a href="index.html"> Regresar al menú </a>
+
+    <script>
+        function mostrarMensaje(event) {
+            // Evita que el formulario se envíe realmente (ya que no tenemos servidor)
+            event.preventDefault();
+
+            // Oculta el formulario
+            document.getElementById("miFormulario").style.display = "none";
+
+            // Muestra el mensaje de envío
+            document.getElementById("mensajeEnviado").style.display = "block";
+        }
+    </script>
 </body>
 </html>
