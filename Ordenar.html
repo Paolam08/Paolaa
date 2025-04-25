@@ -95,7 +95,7 @@
     <h3>Formulario de Contacto:</h3>
 
     <div class="formulario-contacto">
-        <h3>Envíanos tu Mensaje:</h3>
+        <h3>Envíamos tu Mensaje</h3>
         <form id="miFormulario" method="POST" onsubmit="mostrarMensaje(event)">
             <div class="campo-formulario">
                 <label for="nombre">Nombre:</label>
@@ -118,7 +118,6 @@
     </div>
 
     <div id="mensajeEnviado" style="display:none;">
-        <h2>¡Mensaje Enviado!</h2>
         <p>Gracias por tu mensaje.</p>
     </div>
 
@@ -126,13 +125,10 @@
 
     <script>
         function mostrarMensaje(event) {
-            // Evita que el formulario se envíe realmente (ya que no tenemos servidor)
             event.preventDefault();
 
-            // Oculta el formulario
             document.getElementById("miFormulario").style.display = "none";
 
-            // Muestra el mensaje de envío
             document.getElementById("mensajeEnviado").style.display = "block";
         }
     </script>
