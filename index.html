@@ -11,16 +11,10 @@
             margin: 0;
         }
 
-        .contenedor {
-            text-align: center;
-            padding: 20px;
-        }
-
         .barra-negra {
             background-color: black;
             color: white; 
             text-align: center;
-            flex-direction: column;
             height: 0;
             overflow: hidden;
             transition: height 0.5s ease-out;
@@ -29,7 +23,7 @@
         .barra-negra a {
             color: white; 
             text-decoration: none; 
-            margin: 10px 0;
+            margin: 10px 0; 
             display: block;
         }
 
@@ -49,55 +43,32 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             display: block;
         }
-
-        @media (min-width: 769px) {
-            .menu-btn {
-                display: none; /* Oculta el botón en pantallas grandes */
-            }
-
-            .barra-negra {
-                display: flex;
-                height: auto !important;
-                flex-direction: row;
-                justify-content: center;
-                padding: 10px 0;
-            }
-
-            .barra-negra a {
-                margin: 0 15px;
-                display: inline;
-            }
-        }
     </style>
 </head>
-<body>
-    <div class="contenedor">
-        <img src="maxresdefault.jpg" alt="Fotografía" width="400" height="215"><br>
+<body bgcolor="orange">
+    <center>
+        <img src="maxresdefault.jpg" alt="Fotografía" width="400" height="215"><br><br>
 
-        <!-- Botón de menú para móvil -->
+        <!-- Botón para mostrar menú -->
         <button class="menu-btn" onclick="toggleMenu()">Menú</button>
 
-        <!-- Barra de navegación -->
+        <!-- Barra de navegación oculta inicialmente -->
         <div class="barra-negra" id="barraMenu">
             <a href="Inicio.html">Inicio</a>
             <a href="Galeria.html">Galería</a>
             <a href="Ordenar.html">Ordenar</a>
             <a href="Contáctanos.html">Contáctanos</a>
         </div>
-    </div>
+    </center>
 
     <script>
         function toggleMenu() {
             var barra = document.getElementById("barraMenu");
 
             if (barra.style.height === "0px" || barra.style.height === "") {
-                barra.style.display = "block";
-                barra.style.height = "200px"; // Ajusta según el contenido
+                barra.style.height = "200px"; // Se despliega
             } else {
-                barra.style.height = "0px";
-                setTimeout(function () {
-                    barra.style.display = "none";
-                }, 500);
+                barra.style.height = "0px"; // Se oculta
             }
         }
     </script>
