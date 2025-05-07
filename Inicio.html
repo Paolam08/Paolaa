@@ -10,8 +10,10 @@
             background-repeat: no-repeat; 
             background-attachment: fixed; 
             margin: 0;
+            font-family: sans-serif;
         }
 
+        /* Botón menú */
         .menu-btn {
             background-color: #333;
             color: white;
@@ -25,14 +27,20 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        /* Barra oculta por defecto en móvil */
         nav {
             background-color: black;
             text-align: center;
             overflow: hidden;
-            height: 0;
+            max-height: 0;
             display: none;
             flex-direction: column;
-            transition: height 0.5s ease-out;
+            transition: max-height 0.5s ease-out;
+        }
+
+        nav.show {
+            display: flex;
+            max-height: 500px;
         }
 
         nav a {
@@ -54,7 +62,7 @@
 
             nav {
                 display: block;
-                height: auto;
+                max-height: none;
             }
 
             nav a {
@@ -66,7 +74,7 @@
 </head>
 <body bgcolor="white">
 
-    <!-- Botón menú para móviles -->
+    <!-- Botón para desplegar menú en móviles -->
     <button class="menu-btn" onclick="toggleMenu()">Menú</button>
 
     <!-- Barra de navegación -->
@@ -113,19 +121,9 @@
     <script>
         function toggleMenu() {
             const nav = document.getElementById("barraMenu");
-
-            if (nav.style.display === "none" || nav.style.display === "") {
-                nav.style.display = "flex";
-                setTimeout(() => {
-                    nav.style.height = "200px";
-                }, 10);
-            } else {
-                nav.style.height = "0";
-                setTimeout(() => {
-                    nav.style.display = "none";
-                }, 500);
-            }
+            nav.classList.toggle("show");
         }
     </script>
+
 </body>
 </html>
