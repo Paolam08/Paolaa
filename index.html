@@ -1,47 +1,105 @@
 <html>
 <head>
     <title>Mi Página</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             background-image: url("o.jpg");
             background-size: cover; 
             background-repeat: no-repeat; 
             background-attachment: fixed; 
-            
+            margin: 0;
+        }
+
+        .contenedor {
+            text-align: center;
+            padding: 20px;
         }
 
         .barra-negra {
             background-color: black;
             color: white; 
-            padding: 10px 0; 
             text-align: center;
+            flex-direction: column;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-out;
         }
 
         .barra-negra a {
             color: white; 
             text-decoration: none; 
-            margin: 0 15px; 
+            margin: 10px 0;
+            display: block;
         }
 
         .barra-negra a:hover {
-            
             text-decoration: underline;
         }
-</style>
-</head>
-    <body bgcolor="orange">
-    <center>
-    <img src="maxresdefault.jpg" alt="Fotografía" width="400" height="215"><br>
-        <font size="34" face="tahoma" color="#7D6E9F">
-        </font>
-        <br>
 
-        <div class="barra-negra">
+        .menu-btn {
+            background-color: #333;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            margin: 10px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: block;
+        }
+
+        @media (min-width: 769px) {
+            .menu-btn {
+                display: none; /* Oculta el botón en pantallas grandes */
+            }
+
+            .barra-negra {
+                display: flex;
+                height: auto !important;
+                flex-direction: row;
+                justify-content: center;
+                padding: 10px 0;
+            }
+
+            .barra-negra a {
+                margin: 0 15px;
+                display: inline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <img src="maxresdefault.jpg" alt="Fotografía" width="400" height="215"><br>
+
+        <!-- Botón de menú para móvil -->
+        <button class="menu-btn" onclick="toggleMenu()">Menú</button>
+
+        <!-- Barra de navegación -->
+        <div class="barra-negra" id="barraMenu">
             <a href="Inicio.html">Inicio</a>
-            <a href="Galeria.html">Galeria</a>
+            <a href="Galeria.html">Galería</a>
             <a href="Ordenar.html">Ordenar</a>
             <a href="Contáctanos.html">Contáctanos</a>
         </div>
-    </center>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var barra = document.getElementById("barraMenu");
+
+            if (barra.style.height === "0px" || barra.style.height === "") {
+                barra.style.display = "block";
+                barra.style.height = "200px"; // Ajusta según el contenido
+            } else {
+                barra.style.height = "0px";
+                setTimeout(function () {
+                    barra.style.display = "none";
+                }, 500);
+            }
+        }
+    </script>
 </body>
 </html>
