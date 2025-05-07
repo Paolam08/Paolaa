@@ -18,6 +18,7 @@
             height: 0;
             overflow: hidden;
             transition: height 0.5s ease-out;
+            display: none; /* Oculto al cargar */
         }
 
         .barra-negra a {
@@ -52,7 +53,7 @@
         <!-- Botón para mostrar menú -->
         <button class="menu-btn" onclick="toggleMenu()">Menú</button>
 
-        <!-- Barra de navegación oculta inicialmente -->
+        <!-- Barra de navegación inicialmente oculta -->
         <div class="barra-negra" id="barraMenu">
             <a href="Inicio.html">Inicio</a>
             <a href="Galeria.html">Galería</a>
@@ -65,10 +66,14 @@
         function toggleMenu() {
             var barra = document.getElementById("barraMenu");
 
-            if (barra.style.height === "0px" || barra.style.height === "") {
-                barra.style.height = "200px"; // Se despliega
+            if (barra.style.height === "0px" || barra.style.height === "" || barra.style.display === "none") {
+                barra.style.display = "block";
+                barra.style.height = "200px";
             } else {
-                barra.style.height = "0px"; // Se oculta
+                barra.style.height = "0px";
+                setTimeout(function () {
+                    barra.style.display = "none";
+                }, 500); // Espera a que termine la animación
             }
         }
     </script>
