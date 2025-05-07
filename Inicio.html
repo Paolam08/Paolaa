@@ -2,35 +2,72 @@
 <html>
 <head>
     <title>Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-         body {
+        body {
             background-image: url("78616618-ropa-de-niña-y-accesorios-de-fondo-transparente.jpg");
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            background-attachment: fixed; 
-            } 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+        }
+
+        .menu-btn {
+            background-color: #333;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            display: none;
+            margin: 10px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
         nav {
             background-color: black;
-            padding: 10px 0;
             text-align: center;
+            overflow: hidden;
+            height: auto;
+            transition: height 0.5s ease-out;
         }
 
         nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
-            margin: 0 10px;
+            display: inline-block;
             font-weight: bold;
         }
 
         nav a:hover {
             background-color: gray;
         }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                height: 0;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body bgcolor="white">
 
-    <nav>
+    <button class="menu-btn" onclick="toggleMenu()">Menú</button>
+
+    <nav id="barraMenu">
         <a href="Inicio.html">Inicio</a>
         <a href="Galeria.html">Galería</a>
         <a href="Ordenar.html">Ordenar</a>
@@ -65,5 +102,23 @@
     <img src="17047998427847.jpg" alt="Fotografía" width="150" height="250"> <img src="in.jpg" alt="Fotografía" width="150" height="250">  <img src="conjunto-traje-viral-zara-ktKI-U20034181667SOB-1248x1248@MujerHoy.jpg" alt="Fotografía" width="150" height="250"><br>
 
     <a href="index.html"> Regresar al menú </a>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById("barraMenu");
+
+            if (nav.style.display === "none" || nav.style.display === "") {
+                nav.style.display = "flex";
+                setTimeout(() => {
+                    nav.style.height = "200px";
+                }, 10);
+            } else {
+                nav.style.height = "0";
+                setTimeout(() => {
+                    nav.style.display = "none";
+                }, 500);
+            }
+        }
+    </script>
 </body>
 </html>
