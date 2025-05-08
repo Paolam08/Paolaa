@@ -5,24 +5,26 @@
     <style>
         body {
             background-image: url("o.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
             margin: 0;
         }
 
         .barra-negra {
             background-color: black;
-            color: white;
+            color: white; 
             text-align: center;
+            height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-out; /* Para la animación en móvil */
+            transition: height 0.5s ease-out;
+            display: none; /* Oculto al cargar */
         }
 
         .barra-negra a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 0;
+            color: white; 
+            text-decoration: none; 
+            margin: 10px 0; 
             display: block;
         }
 
@@ -40,40 +42,7 @@
             margin: 10px auto;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: block; /* Se muestra en móviles por defecto */
-        }
-
-        /* Estilos para pantallas más grandes (computadoras) */
-        @media (min-width: 768px) {
-            .menu-btn {
-                display: none; /* Ocultar el botón en computadoras */
-            }
-
-            .barra-negra {
-                display: flex; /* Mostrar horizontalmente */
-                justify-content: center; /* Centrar los elementos */
-                height: auto !important; /* Anular la altura inicial */
-                max-height: none !important; /* Desactivar la altura máxima */
-            }
-
-            .barra-negra a {
-                display: block;
-                margin: 0 15px; /* Espacio entre los enlaces */
-                padding: 10px 15px;
-            }
-        }
-
-        /* Estilos para pantallas más pequeñas (móviles) */
-        @media (max-width: 767px) {
-            .barra-negra {
-                display: none; /* Oculto inicialmente en móviles */
-                max-height: 0; /* Para la animación vertical */
-            }
-
-            .barra-negra.open {
-                display: block;
-                max-height: 200px; /* Ajusta según la altura de tus elementos */
-            }
+            display: block;
         }
     </style>
 </head>
@@ -81,8 +50,10 @@
     <center>
         <img src="maxresdefault.jpg" alt="Fotografía" width="400" height="215"><br><br>
 
+        <!-- Botón para mostrar menú -->
         <button class="menu-btn" onclick="toggleMenu()">Menú</button>
 
+        <!-- Barra de navegación inicialmente oculta -->
         <div class="barra-negra" id="barraMenu">
             <a href="Inicio.html">Inicio</a>
             <a href="Galeria.html">Galería</a>
@@ -94,7 +65,16 @@
     <script>
         function toggleMenu() {
             var barra = document.getElementById("barraMenu");
-            barra.classList.toggle("open");
+
+            if (barra.style.height === "0px" || barra.style.height === "" || barra.style.display === "none") {
+                barra.style.display = "block";
+                barra.style.height = "200px";
+            } else {
+                barra.style.height = "0px";
+                setTimeout(function () {
+                    barra.style.display = "none";
+                }, 500); // Espera a que termine la animación
+            }
         }
     </script>
 </body>
