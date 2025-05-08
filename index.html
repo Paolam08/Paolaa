@@ -16,13 +16,13 @@
             color: white;
             text-align: center;
             overflow: hidden;
-            transition: max-height 0.5s ease-out; /* Usamos max-height para la animación vertical */
+            transition: max-height 0.5s ease-out; /* Para la animación en móvil */
         }
 
         .barra-negra a {
             color: white;
             text-decoration: none;
-            padding: 15px; /* Aumentamos el padding para que los enlaces sean más fáciles de tocar en móvil */
+            margin: 10px 0;
             display: block;
         }
 
@@ -40,39 +40,39 @@
             margin: 10px auto;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: block; /* Se muestra por defecto */
+            display: block; /* Se muestra en móviles por defecto */
         }
 
         /* Estilos para pantallas más grandes (computadoras) */
         @media (min-width: 768px) {
             .menu-btn {
-                display: none; /* Ocultamos el botón en computadoras */
+                display: none; /* Ocultar el botón en computadoras */
             }
 
             .barra-negra {
-                display: flex; /* Alineamos los elementos horizontalmente */
-                justify-content: center; /* Centramos los enlaces */
-                height: auto !important; /* Forzamos la altura automática */
-                max-height: none !important; /* Desactivamos la restricción de altura */
+                display: flex; /* Mostrar horizontalmente */
+                justify-content: center; /* Centrar los elementos */
+                height: auto !important; /* Anular la altura inicial */
+                max-height: none !important; /* Desactivar la altura máxima */
             }
 
             .barra-negra a {
-                display: block; /* Aseguramos que los enlaces ocupen su ancho */
-                margin: 0 15px; /* Espacio horizontal entre enlaces */
-                padding: 10px 15px; /* Ajustamos el padding para la barra horizontal */
+                display: block;
+                margin: 0 15px; /* Espacio entre los enlaces */
+                padding: 10px 15px;
             }
         }
 
         /* Estilos para pantallas más pequeñas (móviles) */
         @media (max-width: 767px) {
             .barra-negra {
-                display: none; /* Inicialmente oculto en móviles */
+                display: none; /* Oculto inicialmente en móviles */
                 max-height: 0; /* Para la animación vertical */
             }
 
             .barra-negra.open {
                 display: block;
-                max-height: 400px; /* Ajusta la altura máxima según la cantidad de elementos */
+                max-height: 200px; /* Ajusta según la altura de tus elementos */
             }
         }
     </style>
