@@ -10,26 +10,26 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             margin: 0;
-            background-color: orange; /* Fallback color if image fails to load */
+            background-color: orange; 
         }
 
         .barra-negra {
             background-color: black;
             color: white;
-            padding: 15px 20px; /* Ajusté el padding vertical */
+            padding: 15px 20px;
             text-align: center;
-            display: flex; /* Disposición horizontal */
-            justify-content: center; /* Centrar elementos horizontalmente */
-            align-items: center; /* Centrar elementos verticalmente */
-            height: auto; /* Altura automática */
-            overflow: visible; /* Mostrar siempre el contenido */
-            transition: none; /* Sin transición al cargar en pantallas grandes */
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            height: auto; 
+            overflow: visible; 
+            transition: none;
         }
 
         .barra-negra a {
             color: white;
             text-decoration: none;
-            margin: 0 15px; /* Espacio entre enlaces */
+            margin: 0 15px;
             display: block;
         }
 
@@ -40,20 +40,19 @@
         .menu-btn {
             background-color: #333;
             color: white;
-            padding: 10px 15px; /* Ajusté el padding del botón */
-            font-size: 16px; /* Ajusté el tamaño de la fuente del botón */
+            padding: 10px 15px; 
+            font-size: 16px;
             border: none;
             cursor: pointer;
-            margin: 15px auto; /* Ajusté los márgenes del botón */
+            margin: 15px auto; 
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: none; /* Oculto en pantallas grandes */
+            display: none; 
         }
 
-        /* Media query para pantallas más pequeñas (móviles) */
         @media (max-width: 768px) {
             .barra-negra {
-                display: none; /* Ocultar la barra horizontal en móviles */
+                display: none; 
                 flex-direction: column;
                 height: 0;
                 overflow: hidden;
@@ -66,7 +65,7 @@
             }
 
             .menu-btn {
-                display: block; /* Mostrar el botón en móviles */
+                display: block; 
             }
         }
     </style>
@@ -90,14 +89,14 @@
             var barra = document.getElementById("barraMenu");
 
             if (barra.style.height === "0px" || barra.style.height === "" || barra.style.display === "none") {
-                barra.style.display = "flex"; /* Cambié a flex para la disposición vertical en el desplegable */
-                barra.style.flexDirection = "column"; /* Asegura la disposición vertical */
-                barra.style.height = "auto"; /* Ajusta la altura según el contenido */
+                barra.style.display = "flex"; 
+                barra.style.flexDirection = "column"; 
+                barra.style.height = "auto"; 
             } else {
                 barra.style.height = "0px";
                 setTimeout(function () {
                     barra.style.display = "none";
-                }, 500); // Espera a que termine la animación
+                }, 500); 
             }
         }
     </script>
