@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Mi Página</title>
@@ -5,26 +6,30 @@
     <style>
         body {
             background-image: url("o.jpg");
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            background-attachment: fixed; 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             margin: 0;
+            background-color: orange; /* Fallback color if image fails to load */
         }
 
         .barra-negra {
             background-color: black;
-            color: white; 
+            color: white;
+            padding: 15px 20px; /* Ajusté el padding vertical */
             text-align: center;
-            height: 0;
-            overflow: hidden;
-            transition: height 0.5s ease-out;
-            display: none; /* Oculto al cargar */
+            display: flex; /* Disposición horizontal */
+            justify-content: center; /* Centrar elementos horizontalmente */
+            align-items: center; /* Centrar elementos verticalmente */
+            height: auto; /* Altura automática */
+            overflow: visible; /* Mostrar siempre el contenido */
+            transition: none; /* Sin transición al cargar en pantallas grandes */
         }
 
         .barra-negra a {
-            color: white; 
-            text-decoration: none; 
-            margin: 10px 0; 
+            color: white;
+            text-decoration: none;
+            margin: 0 15px; /* Espacio entre enlaces */
             display: block;
         }
 
@@ -35,14 +40,34 @@
         .menu-btn {
             background-color: #333;
             color: white;
-            padding: 8px 12px;
-            font-size: 14px;
+            padding: 10px 15px; /* Ajusté el padding del botón */
+            font-size: 16px; /* Ajusté el tamaño de la fuente del botón */
             border: none;
             cursor: pointer;
-            margin: 10px auto;
+            margin: 15px auto; /* Ajusté los márgenes del botón */
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: block;
+            display: none; /* Oculto en pantallas grandes */
+        }
+
+        /* Media query para pantallas más pequeñas (móviles) */
+        @media (max-width: 768px) {
+            .barra-negra {
+                display: none; /* Ocultar la barra horizontal en móviles */
+                flex-direction: column;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.5s ease-out;
+                padding: 10px 0;
+            }
+
+            .barra-negra a {
+                margin: 10px 0;
+            }
+
+            .menu-btn {
+                display: block; /* Mostrar el botón en móviles */
+            }
         }
     </style>
 </head>
@@ -50,10 +75,8 @@
     <center>
         <img src="maxresdefault.jpg" alt="Fotografía" width="400" height="215"><br><br>
 
-        <!-- Botón para mostrar menú -->
         <button class="menu-btn" onclick="toggleMenu()">Menú</button>
 
-        <!-- Barra de navegación inicialmente oculta -->
         <div class="barra-negra" id="barraMenu">
             <a href="Inicio.html">Inicio</a>
             <a href="Galeria.html">Galería</a>
@@ -67,8 +90,9 @@
             var barra = document.getElementById("barraMenu");
 
             if (barra.style.height === "0px" || barra.style.height === "" || barra.style.display === "none") {
-                barra.style.display = "block";
-                barra.style.height = "200px";
+                barra.style.display = "flex"; /* Cambié a flex para la disposición vertical en el desplegable */
+                barra.style.flexDirection = "column"; /* Asegura la disposición vertical */
+                barra.style.height = "auto"; /* Ajusta la altura según el contenido */
             } else {
                 barra.style.height = "0px";
                 setTimeout(function () {
